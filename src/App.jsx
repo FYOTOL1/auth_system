@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
 import Login from "./pages/loginPage";
 import Register from "./pages/registerPage";
 import Dashboard from "./pages/dashboardPage";
@@ -18,7 +18,13 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <div>404 Not Found</div>,
+    element: (
+      <div className="text-4xl font-semibold text-blue-500 flex justify-center items-center h-screen w-full">
+        <Link className="transition-all hover:text-blue-800" to="/dashboard">
+          Visit to Dashboard
+        </Link>
+      </div>
+    ),
   },
 ]);
 
