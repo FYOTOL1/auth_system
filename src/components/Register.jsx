@@ -14,45 +14,37 @@ const Register = () => {
 
   const navigate = useNavigate();
 
-  const special_chars_list = [
-    "*",
-    "-",
-    "_",
-    "!",
-    "@",
-    "#",
-    "$",
-    "%",
-    "^",
-    "&",
-    "+",
-    "-",
-    "~",
-  ];
+  const uppercasePattern = /[A-Z]/,
+    lowercasePattern = /[a-z]/,
+    digitPattern = /\d/,
+    symbolPattern = /[@$!%*?&_\-+=#]/,
+    lengthPattern = /.{8,}/;
 
   const password_required_List = [
-    { id: 1, text: "Use 8 or more characters", check: password.length >= 8 },
+    {
+      id: 1,
+      text: "Use 8 or more characters",
+      check: lengthPattern.test(password),
+    },
     {
       id: 2,
       text: "One Uppercase Character",
-      check: Array.from(password).some((f) => f == f.toUpperCase()),
+      check: uppercasePattern.test(password),
     },
     {
       id: 3,
       text: "One lowercase Character",
-      check: Array.from(password).some((f) => f == f.toLowerCase()),
+      check: lowercasePattern.test(password),
     },
     {
       id: 4,
       text: "One Special Character",
-      check: Array.from(password).some((char) =>
-        special_chars_list.includes(char)
-      ),
+      check: symbolPattern.test(password),
     },
     {
       id: 5,
       text: "One number",
-      check: /\d/.test(password),
+      check: digitPattern.test(password),
     },
   ];
 
