@@ -2,9 +2,7 @@
 const Layout = ({ children }) => {
   return (
     <>
-      <div className="lg:container mx-auto flex justify-center items-center h-full min-h-screen w-full">
-        {children}
-      </div>
+      <div className="min-h-screen h-full w-full">{children}</div>
     </>
   );
 };

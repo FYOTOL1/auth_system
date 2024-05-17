@@ -19,9 +19,7 @@ const Register = () => {
     <>
       {Authed && (
         <Layout>
-          <Layout>
-            <RegisterComp />
-          </Layout>
+          <RegisterComp />
         </Layout>
       )}
     </>

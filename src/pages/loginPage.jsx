@@ -19,8 +19,7 @@ const Login = () => {
     <>
       {Authed && (
         <Layout>
-            <LoginComp />
-          
+          <LoginComp />
         </Layout>
       )}
     </>
