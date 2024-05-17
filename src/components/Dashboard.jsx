@@ -9,7 +9,7 @@ const Dashboard = () => {
           <Link to={"/login"}>Login</Link>
           <Link to={"/register"}>Register</Link>
         </header>
-        <h1 className="text-4xl text-blue-400">Dashboard</h1>
+        <div className="text-4xl text-blue-400">Dashboard</div>
       </Layout>
     </>
   );
