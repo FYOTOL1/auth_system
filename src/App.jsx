@@ -20,7 +20,10 @@ const router = createBrowserRouter([
     path: "*",
     element: (
       <div className="text-4xl font-semibold text-blue-500 flex justify-center items-center h-screen w-full">
-        <Link className="transition-all hover:text-blue-800" to="/dashboard">
+        <Link
+          className="transition-all text-white hover:bg-blue-700 py-3 px-6 bg-blue-500"
+          to="/dashboard"
+        >
           Visit to Dashboard
         </Link>
       </div>
