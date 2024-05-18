@@ -38,7 +38,7 @@ const Login = () => {
 
   const LoginFunc = () => {
     const get_email_list = JSON.parse(localStorage.getItem("emails_list"));
-    const check_email = get_email_list?.some((f) => f === email);
+    const check_email = get_email_list.some((f) => f === email);
 
     if (get_email_list && check_email) {
       localStorage.setItem("user_info", JSON.stringify({ email, password }));
