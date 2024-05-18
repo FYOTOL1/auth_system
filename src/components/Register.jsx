@@ -19,35 +19,35 @@ const Register = () => {
     lowercasePattern = /[a-z]/,
     digitPattern = /\d/,
     symbolPattern = /[@$!%*?&_\-+=#]/,
-    lengthPattern = /.{8,}/;
-
-  const password_required_List = [
-    {
-      id: 1,
-      text: "Use 8 or more characters",
-      check: lengthPattern.test(password),
-    },
-    {
-      id: 2,
-      text: "One Uppercase Character",
-      check: uppercasePattern.test(password),
-    },
-    {
-      id: 3,
-      text: "One lowercase Character",
-      check: lowercasePattern.test(password),
-    },
-    {
-      id: 4,
-      text: "One Special Character",
-      check: symbolPattern.test(password),
-    },
-    {
-      id: 5,
-      text: "One number",
-      check: digitPattern.test(password),
-    },
-  ];
+    lengthPattern = /.{8,}/,
+    regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,6}$/,
+    password_required_List = [
+      {
+        id: 1,
+        text: "Use 8 or more characters",
+        check: lengthPattern.test(password),
+      },
+      {
+        id: 2,
+        text: "One Uppercase Character",
+        check: uppercasePattern.test(password),
+      },
+      {
+        id: 3,
+        text: "One lowercase Character",
+        check: lowercasePattern.test(password),
+      },
+      {
+        id: 4,
+        text: "One Special Character",
+        check: symbolPattern.test(password),
+      },
+      {
+        id: 5,
+        text: "One number",
+        check: digitPattern.test(password),
+      },
+    ];
 
   const show_un_password = () => {
     if (Show_Password) {
@@ -151,7 +151,7 @@ const Register = () => {
       <div className="flex justify-between gap-3 w-full min-h-screen h-full outline outline-1 outline-gray-100 rounded-md">
         <div className="flex flex-col items-end w-full sm:w-[55%] lg:container ms-auto p-3">
           <div>
-            <img className="w-40" src="/logo.png" alt="Logo" />
+            <img className="w-40" src="/logo.svg" alt="Logo" />
             <div className="px-2 sm:px-16">
               <h1 className="mt-10 text-4xl font-sans text-zinc-700 font-semibold">
                 Welcome to Learn2Earn
@@ -172,7 +172,11 @@ const Register = () => {
                   <input
                     onChange={(c) => setEmail(c.target.value)}
                     id="email"
-                    className="outline outline-1 outline-gray-300 px-4 py-3 rounded-lg text-zinc-800 transition-all focus:outline-gray-700"
+                    className={`outline outline-1 ${
+                      regex.test(email)
+                        ? "outline-blue-300 focus:outline-blue-700"
+                        : "outline-red-300 focus:outline-red-600"
+                    } px-4 py-3 rounded-lg text-zinc-800 transition-all focus:outline-gray-700`}
                     type="text"
                     required
                     name="email"
@@ -185,7 +189,11 @@ const Register = () => {
                   <input
                     onChange={(c) => setUsername(c.target.value)}
                     id="username"
-                    className="outline outline-1 outline-gray-300 px-4 py-3 rounded-lg text-zinc-800 transition-all focus:outline-gray-700"
+                    className={`outline outline-1 ${
+                      username.length
+                        ? "outline-blue-300 focus:outline-blue-700"
+                        : "outline-red-300 focus:outline-red-600"
+                    } px-4 py-3 rounded-lg text-zinc-800 transition-all focus:outline-gray-700`}
                     type="text"
                     required
                     name="username"
@@ -209,7 +217,11 @@ const Register = () => {
                   <input
                     onChange={(c) => setPassword(c.target.value)}
                     id="password"
-                    className="outline outline-1 outline-gray-300 px-4 py-3 rounded-lg text-zinc-800 transition-all focus:outline-gray-700"
+                    className={`outline outline-1 ${
+                      password_required_List.some((f) => f.check == false)
+                        ? "outline-red-300 focus:outline-red-700"
+                        : "outline-gray-300 focus:outline-blue-600"
+                    } px-4 py-3 rounded-lg text-zinc-800 transition-all `}
                     type={Show_Password ? "text" : "password"}
                     value={password}
                     required
