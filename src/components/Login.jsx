@@ -80,10 +80,7 @@ const Login = () => {
           </Link>
         </p>
 
-        <form
-          onSubmit={(s) => s.preventDefault()}
-          className="mt-8 w-full max-w-[700px]"
-        >
+        <form onSubmit={(s) => s.preventDefault()} className="mt-8 w-full">
           <div className="flex flex-col gap-2 w-full text-zinc-500">
             <label htmlFor="email">Email</label>
             <input
